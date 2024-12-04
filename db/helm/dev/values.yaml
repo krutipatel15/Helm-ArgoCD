@@ -1,0 +1,23 @@
+db:
+  name: wp-database
+  labels:
+    app: db
+    env: dev
+    stack: wordpress
+  image:
+    repository: mariadb
+    tag: 10.6.4-focal
+    pullPolicy: Always
+  replicas: 1
+  configmap:
+    ## KEY: "value"
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    APP_ENV: dev
+  containerPorts:
+      mysql: 3306
+  secrets:
+    MYSQL_PASSWORD: "wordpress"
+    MYSQL_ROOT_PASSWORD: "somerootpassword"
+    MYSQL_PASSWORD: "wordpress"
+    MYSQL_DATABASE: "wordpress"

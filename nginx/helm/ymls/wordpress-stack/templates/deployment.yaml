@@ -1,0 +1,30 @@
+---
+# Source: wordpress-stack/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wpapp-nginx
+  labels:
+    app: wp
+    env: dev
+    stack: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wp
+      env: dev
+      stack: wordpress
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: wp
+        env: dev
+        stack: wordpress
+    spec:
+      containers:
+      - name: wpapp
+        image: krutipatel15/nginx-act-3:v4
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

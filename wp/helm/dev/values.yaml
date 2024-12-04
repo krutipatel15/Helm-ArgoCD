@@ -1,0 +1,21 @@
+wp:
+  name: wpapp
+  labels:
+    app: wp
+    env: dev
+    stack: wordpress
+  image:
+    repository: wordpress
+    tag: latest
+    pullPolicy: Always
+  replicas: 3
+  configmap:
+    ## KEY: "value"
+    APP_ENV: "dev"
+    WORDPRESS_DB_HOST: "wp-database.wp-db-n.svc.cluster.local"
+    WORDPRESS_DB_NAME: "wordpress"
+    WORDPRESS_DB_USER: "wordpress"
+  containerPorts:
+      http: 80
+  secrets:
+        WORDPRESS_DB_PASSWORD: "wordpress"

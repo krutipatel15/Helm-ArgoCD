@@ -1,0 +1,23 @@
+wp:
+  name: wp-app
+  labels:
+    app: wp-app
+    env: dev
+    stack: wordpress
+  image:
+    repository: krutipatel15/nginx-act-3
+    tag: v2
+    pullPolicy: Always
+  replicas: 5
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+  resources:
+    requests:
+      cpu: "150m"
+      memory: "128Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+  containerPorts:
+      http: 80
